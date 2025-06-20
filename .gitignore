@@ -52,3 +52,32 @@ CodeCoverage/
 *.VisualState.xml
 TestResult.xml
 nunit-*.xml
+
+# Archivos y carpetas de compilación
+bin/
+obj/
+
+# Archivos de caché
+*.cache
+*.cache.json
+
+# Archivos temporales y de usuario
+*.user
+*.suo
+*.userosscache
+*.sln.docstates
+
+# Archivos del entorno de Visual Studio
+.vs/
+
+# Archivos de configuración locales
+*.dbmdl
+*.log
+*.vsp
+*.pdb
+
+# Otros archivos generados
+*.DS_Store
+*.ncb
+*.opendb
+*.VC.db
