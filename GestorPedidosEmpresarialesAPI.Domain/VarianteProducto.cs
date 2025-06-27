@@ -29,6 +29,8 @@ namespace GestorPedidosEmpresarialesBackend.Domain
             this.eliminado = eliminado;
         }
 
+            
+
         public int IdVariante { get => idVariante; set => idVariante = value; }
         public int IdProductoBase { get => idProductoBase; set => idProductoBase = value; }
         public string Talla { get => talla; set => talla = value; }
