@@ -10,20 +10,20 @@ namespace GestorPedidosEmpresarialesBackend.Domain
     {
         private int idProductoBase;
         private string nombreProducto;
-        private int idCategoria;
+        private Categoria categoria;
         private bool eliminado;
 
-        public ProductoBase(int idProductoBase, string nombreProducto, int idCategoria, bool eliminado)
+        public ProductoBase(int idProductoBase, string nombreProducto, Categoria categoria, bool eliminado)
         {
             this.idProductoBase = idProductoBase;
             this.nombreProducto = nombreProducto;
-            this.idCategoria = idCategoria;
+            this.categoria = categoria;
             this.eliminado = eliminado;
         }
 
         public int IdProductoBase { get => idProductoBase; set => idProductoBase = value; }
         public string NombreProducto { get => nombreProducto; set => nombreProducto = value; }
-        public int IdCategoria { get => idCategoria; set => idCategoria = value; }
+        public Categoria Categoria { get => categoria; set => categoria = value; }
         public bool Eliminado { get => eliminado; set => eliminado = value; }
 
     }

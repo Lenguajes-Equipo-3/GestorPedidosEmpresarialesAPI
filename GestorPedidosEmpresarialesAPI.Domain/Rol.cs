@@ -9,7 +9,7 @@ namespace GestorPedidosEmpresarialesBackend.Domain
     public class Rol
     {
         private int idRol;
-        private String nombreRol;
+        private string nombreRol;
         private bool eliminado;
 
         public Rol(int idRol, string nombreRol, bool eliminado)

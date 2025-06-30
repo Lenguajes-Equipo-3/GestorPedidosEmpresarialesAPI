@@ -9,7 +9,7 @@ namespace GestorPedidosEmpresarialesBackend.Domain
     public class Categoria
     {
         private int idCategoria;
-        private String descripcion;
+        private string descripcion;
         private bool eliminado;
 
         public Categoria(int idCategoria, string descripcion, bool eliminado)
