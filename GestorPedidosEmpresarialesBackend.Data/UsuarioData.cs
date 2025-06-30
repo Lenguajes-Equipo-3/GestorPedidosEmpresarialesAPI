@@ -1,4 +1,5 @@
 ﻿using GestorPedidosEmpresarialesBackend.Domain;
+using Microsoft.Extensions.Configuration;
 using System;
 using System.Collections.Generic;
 using System.Data.SqlClient;
@@ -12,9 +13,9 @@ namespace GestorPedidosEmpresarialesBackend.Data
     {
         private readonly string connectionString;
 
-        public UsuarioData(string connectionString)
+        public UsuarioData(IConfiguration configuration)
         {
-            this.connectionString = connectionString;
+            connectionString = configuration.GetConnectionString("DefaultConnection");
         }
 
         /// <summary>
