@@ -19,6 +19,7 @@ namespace GestorPedidosEmpresarialesBackend.Domain
             this.eliminado = eliminado;
         }
 
+        public Departamento() { }
         public int IdDepartamento { get => idDepartamento; set => idDepartamento = value; }
         public string NombreDepartamento { get => nombreDepartamento; set => nombreDepartamento = value; }
         public bool Eliminado { get => eliminado; set => eliminado = value; }

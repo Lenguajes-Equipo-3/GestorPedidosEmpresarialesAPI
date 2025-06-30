@@ -19,6 +19,8 @@ namespace GestorPedidosEmpresarialesBackend.Domain
             this.eliminado = eliminado;
         }
 
+      public Rol() { }
+
         public int IdRol { get => idRol; set => idRol = value; }
         public string NombreRol { get => nombreRol; set => nombreRol = value; }
         public bool Eliminado { get => eliminado; set => eliminado = value; }
