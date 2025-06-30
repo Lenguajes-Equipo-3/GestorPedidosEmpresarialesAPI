@@ -88,8 +88,10 @@ namespace GestorPedidosEmpresarialesBackend.Data
                                     Rol = new Rol
                                     {
                                         IdRol = reader.GetInt32(reader.GetOrdinal("id_rol")),
-                                        NombreRol = reader.GetString(reader.GetOrdinal("nombre_rol"))
+                                        NombreRol = reader.GetString(reader.GetOrdinal("nombre_rol")),
+                                        Eliminado = false // Asumiendo que el valor predeterminado es 'false' ya que no se proporciona en la consulta
                                     }
+                                 
                                 }
                             };
                         }

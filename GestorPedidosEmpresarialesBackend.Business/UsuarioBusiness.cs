@@ -17,16 +17,25 @@ namespace GestorPedidosEmpresarialesBackend.Business
         {
             this.usuarioData = usuarioData;
         }
+        /// <summary>
+        /// Valida el login de un usuario con correo y contraseña.
+        /// Lanza excepción si las credenciales son inválidas o si hay error de conexión.
+        /// </summary>
+        /// <param name="correo">Correo electrónico</param>
+        /// <param name="contrasenna">Contraseña</param>
+        /// <returns>Usuario autenticado con datos completos</returns>
 
         public Usuario ValidarLogin(string correo, string contrasenna)
         {
             try
             {
                 var usuario = usuarioData.ValidarLogin(correo, contrasenna);
+
+
                 if (usuario == null)
-                {
                     throw new UnauthorizedAccessException("Credenciales inválidas.");
-                }
+
+
                 return usuario;
             }
             catch (SqlException ex)
@@ -35,9 +44,10 @@ namespace GestorPedidosEmpresarialesBackend.Business
             }
             catch (Exception ex)
             {
-                throw new Exception("Error inesperado al validar login.", ex);
+
+                throw new Exception("Error inesperado al validar el login.", ex);
             }
         }
     }
 }
-✅
+

@@ -3,13 +3,17 @@ using GestorPedidosEmpresarialesBackend.Data;
 
 var builder = WebApplication.CreateBuilder(args);
 
-builder.Services.AddScoped<UsuarioData>();       // Inyección de UsuarioData
-builder.Services.AddScoped<UsuarioBusiness>();   // Inyección de UsuarioBusiness
+
+builder.Services.AddScoped<UsuarioData>();
+builder.Services.AddScoped<UsuarioBusiness>();
+
 
 // Add services to the container.
 
 builder.Services.AddControllers();
 // Learn more about configuring OpenAPI at https://aka.ms/aspnet/openapi
+
+
 builder.Services.AddOpenApi();
 
 var app = builder.Build();

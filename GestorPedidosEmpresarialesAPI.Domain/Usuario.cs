@@ -14,7 +14,7 @@ namespace GestorPedidosEmpresarialesBackend.Domain
         private string contrasenna;
         private bool eliminado;
 
-       Usuario(){ }
+        public Usuario(){ }
 
         public Usuario(int idUsuario, Empleado empleado, string email, string contrasenna, bool eliminado)
         {
