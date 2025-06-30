@@ -38,6 +38,7 @@ namespace GestorPedidosEmpresarialesBackend.Domain
             this.telefono = telefono;
             this.eliminado = eliminado;
         }
+        public Cliente() { }
 
         public int IdCliente { get => idCliente; set => idCliente = value; }
         public string NombreCompania { get => nombreCompania; set => nombreCompania = value; }

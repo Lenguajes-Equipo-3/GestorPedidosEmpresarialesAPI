@@ -6,6 +6,8 @@ var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddScoped<UsuarioData>();
 builder.Services.AddScoped<UsuarioBusiness>();
+builder.Services.AddScoped <ClienteData>();
+builder.Services.AddScoped<ClienteBusiness>();
 
 
 // Add services to the container.
