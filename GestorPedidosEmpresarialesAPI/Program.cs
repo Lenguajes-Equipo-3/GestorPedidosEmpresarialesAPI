@@ -1,4 +1,10 @@
+using GestorPedidosEmpresarialesBackend.Business;
+using GestorPedidosEmpresarialesBackend.Data;
+
 var builder = WebApplication.CreateBuilder(args);
+
+builder.Services.AddScoped<UsuarioData>();       // Inyección de UsuarioData
+builder.Services.AddScoped<UsuarioBusiness>();   // Inyección de UsuarioBusiness
 
 // Add services to the container.
 
