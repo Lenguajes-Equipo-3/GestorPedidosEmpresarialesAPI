@@ -1,3 +1,4 @@
+
 ﻿using GestorPedidosEmpresarialesAPI.DTOs;
 using GestorPedidosEmpresarialesAPI.Mapper;
 using GestorPedidosEmpresarialesBackend.Business;
@@ -11,6 +12,7 @@ namespace GestorPedidosEmpresarialesAPI.Controllers
     [ApiController]
     public class AuthController : ControllerBase
     {
+
         private readonly UsuarioBusiness usuarioBusiness;
 
         public AuthController(UsuarioBusiness usuarioBusiness)
@@ -38,3 +40,4 @@ namespace GestorPedidosEmpresarialesAPI.Controllers
         }
     }
 }
+

@@ -3,7 +3,7 @@ using GestorPedidosEmpresarialesBackend.Data;
 
 var builder = WebApplication.CreateBuilder(args);
 
-// Registro de dependencias
+
 builder.Services.AddScoped<UsuarioData>();
 builder.Services.AddScoped<UsuarioBusiness>();
 
