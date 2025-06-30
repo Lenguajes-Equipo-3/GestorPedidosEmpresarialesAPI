@@ -10,7 +10,8 @@ builder.Services.AddScoped <ClienteData>();
 builder.Services.AddScoped<ClienteBusiness>();
 builder.Services.AddScoped<ParametrosSistemaData>();
 builder.Services.AddScoped<ParametrosSistemaBusiness>();
-
+builder.Services.AddScoped<ProductoBaseData>();
+builder.Services.AddScoped<ProductoBaseBusiness>();
 
 
 // Add services to the container.
