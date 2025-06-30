@@ -14,11 +14,11 @@ namespace GestorPedidosEmpresarialesBackend.Domain
         private string puesto;
         private string extension;
         private string telefonoTrabajo;
-        private int idDepartamento;
-        private int idRol;
+        private Departamento departamento;
+        private Rol rol;
         private bool eliminado;
 
-        public Empleado(int idEmpleado, string nombreEmpleado, string apellidosEmpleado, string puesto, string extension, string telefonoTrabajo, int idDepartamento, int idRol, bool eliminado)
+        public Empleado(int idEmpleado, string nombreEmpleado, string apellidosEmpleado, string puesto, string extension, string telefonoTrabajo, Departamento departamento, Rol rol, bool eliminado)
         {
             this.idEmpleado = idEmpleado;
             this.nombreEmpleado = nombreEmpleado;
@@ -26,8 +26,8 @@ namespace GestorPedidosEmpresarialesBackend.Domain
             this.puesto = puesto;
             this.extension = extension;
             this.telefonoTrabajo = telefonoTrabajo;
-            this.idDepartamento = idDepartamento;
-            this.idRol = idRol;
+            this.departamento = departamento;
+            this.rol = idRol;
             this.eliminado = eliminado;
         }
 
