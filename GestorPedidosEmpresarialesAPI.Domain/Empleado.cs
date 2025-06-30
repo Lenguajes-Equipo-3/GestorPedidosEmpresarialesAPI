@@ -27,7 +27,7 @@ namespace GestorPedidosEmpresarialesBackend.Domain
             this.extension = extension;
             this.telefonoTrabajo = telefonoTrabajo;
             this.departamento = departamento;
-            this.rol = idRol;
+            this.rol = rol;
             this.eliminado = eliminado;
         }
 
@@ -37,8 +37,8 @@ namespace GestorPedidosEmpresarialesBackend.Domain
         public string Puesto { get => puesto; set => puesto = value; }
         public string Extension { get => extension; set => extension = value; }
         public string TelefonoTrabajo { get => telefonoTrabajo; set => telefonoTrabajo = value; }
-        public int IdDepartamento { get => idDepartamento; set => idDepartamento = value; }
-        public int IdRol { get => idRol; set => idRol = value; }
+        public Departamento Departamento { get => departamento; set => departamento = value; }
+        public Rol IdRol { get => rol; set => rol = value; }
         public bool Eliminado { get => eliminado; set => eliminado = value; }
 
     }
