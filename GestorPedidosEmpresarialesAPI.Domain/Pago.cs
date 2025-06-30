@@ -11,7 +11,7 @@ namespace GestorPedidosEmpresarialesBackend.Domain
     public class Pago
     {
         private int idPago;
-        private int idOrden;
+        private Orden orden;
         private double cantidadPago;
         private DateTime fechaPago;
         private string numTarjetaCredito;
@@ -19,12 +19,12 @@ namespace GestorPedidosEmpresarialesBackend.Domain
         private MetodoPago metodoPago;
         private bool eliminado;
 
-        public Pago(int idPago, int idOrden, double cantidadPago, DateTime fechaPago,
+        public Pago(int idPago, Orden orden, double cantidadPago, DateTime fechaPago,
                     string numTarjetaCredito, string nomUsuarioTarjeta,
                     MetodoPago metodoPago, bool eliminado)
         {
             this.idPago = idPago;
-            this.idOrden = idOrden;
+            this.orden = orden;
             this.cantidadPago = cantidadPago;
             this.fechaPago = fechaPago;
             this.numTarjetaCredito = numTarjetaCredito;
@@ -34,7 +34,7 @@ namespace GestorPedidosEmpresarialesBackend.Domain
         }
 
         public int IdPago { get => idPago; set => idPago = value; }
-        public int IdOrden { get => idOrden; set => idOrden = value; }
+        public Orden Orden { get => orden; set => orden = value; }
         public double CantidadPago { get => cantidadPago; set => cantidadPago = value; }
         public DateTime FechaPago { get => fechaPago; set => fechaPago = value; }
         public string NumTarjetaCredito { get => numTarjetaCredito; set => numTarjetaCredito = value; }

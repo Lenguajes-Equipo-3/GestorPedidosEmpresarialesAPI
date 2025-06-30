@@ -9,7 +9,7 @@ namespace GestorPedidosEmpresarialesBackend.Domain
     public class Departamento
     {
         private int idDepartamento;
-        private String nombreDepartamento;
+        private string nombreDepartamento;
         private bool eliminado;
 
         public Departamento(int idDepartamento, string nombreDepartamento, bool eliminado)

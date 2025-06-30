@@ -9,7 +9,7 @@ namespace GestorPedidosEmpresarialesBackend.Domain
     public class VarianteProducto
     {
         private int idVariante;
-        private int idProductoBase;
+        private ProductoBase productoBase;
         private string talla;
         private string descripcion;
         private decimal precio;
@@ -17,10 +17,10 @@ namespace GestorPedidosEmpresarialesBackend.Domain
         private int puntoReorden;
         private bool eliminado;
 
-        public VarianteProducto(int idVariante, int idProductoBase, string talla, string descripcion, decimal precio, decimal cantidadExistencias, int puntoReorden, bool eliminado)
+        public VarianteProducto(int idVariante, ProductoBase productoBase, string talla, string descripcion, decimal precio, decimal cantidadExistencias, int puntoReorden, bool eliminado)
         {
             this.idVariante = idVariante;
-            this.idProductoBase = idProductoBase;
+            this.productoBase = productoBase;
             this.talla = talla;
             this.descripcion = descripcion;
             this.precio = precio;
@@ -32,7 +32,7 @@ namespace GestorPedidosEmpresarialesBackend.Domain
         
 
         public int IdVariante { get => idVariante; set => idVariante = value; }
-        public int IdProductoBase { get => idProductoBase; set => idProductoBase = value; }
+        public ProductoBase ProductoBase { get => productoBase; set => productoBase = value; }
         public string Talla { get => talla; set => talla = value; }
         public string Descripcion { get => descripcion; set => descripcion = value; }
         public decimal Precio { get => precio; set => precio = value; }
