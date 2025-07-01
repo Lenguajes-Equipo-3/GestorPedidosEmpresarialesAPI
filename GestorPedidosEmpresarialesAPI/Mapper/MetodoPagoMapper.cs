@@ -11,5 +11,12 @@ namespace GestorPedidosEmpresarialesAPI.Mapper
             Metodo = m.Metodo,
             TarjetaCredito = m.TarjetaCredito
         };
+
+        public static MetodoPago ToEntity(MetodoPagoDto dto) => new(
+            idMetodoPago: dto.IdMetodoPago,
+            metodoPago: dto.Metodo,
+            tarjetaCredito: dto.TarjetaCredito,
+            eliminado: false
+        );
     }
 }
