@@ -19,6 +19,8 @@ namespace GestorPedidosEmpresarialesBackend.Domain
         private MetodoPago metodoPago;
         private bool eliminado;
 
+
+        public Pago() { }
         public Pago(int idPago, Orden orden, double cantidadPago, DateTime fechaPago,
                     string numTarjetaCredito, string nomUsuarioTarjeta,
                     MetodoPago metodoPago, bool eliminado)
