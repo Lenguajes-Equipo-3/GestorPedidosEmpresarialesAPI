@@ -13,6 +13,8 @@ builder.Services.AddScoped<ParametrosSistemaData>();
 builder.Services.AddScoped<ParametrosSistemaBusiness>();
 builder.Services.AddScoped<ProductoBaseData>();
 builder.Services.AddScoped<ProductoBaseBusiness>();
+builder.Services.AddScoped<ProductoVarianteData>();
+builder.Services.AddScoped<ProductoVarianteBusiness>();
 
 // ¡AÑADE ESTAS LÍNEAS!
 // Registro para Rol
