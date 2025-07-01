@@ -15,6 +15,12 @@ builder.Services.AddScoped<ProductoBaseData>();
 builder.Services.AddScoped<ProductoBaseBusiness>();
 builder.Services.AddScoped<ProductoVarianteData>();
 builder.Services.AddScoped<ProductoVarianteBusiness>();
+builder.Services.AddScoped<MetodoPagoData>();
+builder.Services.AddScoped<MetodoPagoBusiness>();
+builder.Services.AddScoped<PagoData>();
+builder.Services.AddScoped<PagoBusiness>();
+
+
 
 // ¡AÑADE ESTAS LÍNEAS!
 // Registro para Rol
@@ -28,6 +34,10 @@ builder.Services.AddScoped<DepartamentoBusiness>();
 // Registro para Empleado
 builder.Services.AddScoped<EmpleadoData>();
 builder.Services.AddScoped<EmpleadoBusiness>();
+
+//Registro para Categoria
+builder.Services.AddScoped<CategoriaData>();
+builder.Services.AddScoped<CategoriaBusiness>();
 
 builder.Services.AddControllers();
 
