@@ -1,5 +1,6 @@
 using GestorPedidosEmpresarialesBackend.Business;
 using GestorPedidosEmpresarialesBackend.Data;
+using Microsoft.Extensions.DependencyInjection;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -13,12 +14,20 @@ builder.Services.AddScoped<ParametrosSistemaBusiness>();
 builder.Services.AddScoped<ProductoBaseData>();
 builder.Services.AddScoped<ProductoBaseBusiness>();
 
+// ¡AÑADE ESTAS LÍNEAS!
+// Registro para Rol
+builder.Services.AddScoped<RolData>();
+builder.Services.AddScoped<RolBusiness>();
 
-// Add services to the container.
+// Registro para Departamento
+builder.Services.AddScoped<DepartamentoData>();
+builder.Services.AddScoped<DepartamentoBusiness>();
+
+// Registro para Empleado
+builder.Services.AddScoped<EmpleadoData>();
+builder.Services.AddScoped<EmpleadoBusiness>();
 
 builder.Services.AddControllers();
-// Learn more about configuring OpenAPI at https://aka.ms/aspnet/openapi
-
 
 builder.Services.AddOpenApi();
 
