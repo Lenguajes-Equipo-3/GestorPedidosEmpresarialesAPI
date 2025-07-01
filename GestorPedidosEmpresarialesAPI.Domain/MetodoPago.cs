@@ -13,6 +13,7 @@ namespace GestorPedidosEmpresarialesBackend.Domain
         private string tarjetaCredito;
         private bool eliminado;
 
+        public MetodoPago() { }
         public MetodoPago(int idMetodoPago, string metodoPago, string tarjetaCredito, bool eliminado)
         {
             this.idMetodoPago = idMetodoPago;

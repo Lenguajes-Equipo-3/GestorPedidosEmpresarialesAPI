@@ -24,6 +24,8 @@ namespace GestorPedidosEmpresarialesBackend.Domain
         private bool eliminado;
 
         //Crea orden sin detalles
+
+        public Orden() { }
         public Orden(int idOrden, Cliente cliente, Empleado empleado, DateTime fechaOrden,
                      string direccionViaje, string ciudadViaje, string provinciaViaje,
                      string paisViaje, string telefonoViaje, bool eliminado)
