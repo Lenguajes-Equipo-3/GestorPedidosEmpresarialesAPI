@@ -29,6 +29,10 @@ builder.Services.AddScoped<DepartamentoBusiness>();
 builder.Services.AddScoped<EmpleadoData>();
 builder.Services.AddScoped<EmpleadoBusiness>();
 
+//Registro para Categoria
+builder.Services.AddScoped<CategoriaData>();
+builder.Services.AddScoped<CategoriaBusiness>();
+
 builder.Services.AddControllers();
 
 builder.Services.AddOpenApi();
