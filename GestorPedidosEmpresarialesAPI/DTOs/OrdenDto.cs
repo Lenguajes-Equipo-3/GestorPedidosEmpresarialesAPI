@@ -7,7 +7,7 @@ namespace GestorPedidosEmpresarialesAPI.DTOs
         public int IdOrden { get; set; }
         public ClienteDto Cliente { get; set; }
         public EmpleadoDto Empleado { get; set; }
-       // public List<DetalleOrdenDto> DetallesOrden { get; set; }
+        public List<DetalleOrdenDto> DetallesOrden { get; set; }
         public DateTime FechaOrden { get; set; }
         public string DireccionViaje { get; set; }
         public string CiudadViaje { get; set; }
