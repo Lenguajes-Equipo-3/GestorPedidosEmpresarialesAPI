@@ -121,7 +121,7 @@ namespace GestorPedidosEmpresarialesBackend.Test
             var lista = data.GetAll();
 
             Assert.That(lista, Is.Not.Null);
-            Assert.That(lista.Count, Is.GreaterThanOrEqualTo(0)); // Puede estar vacía si no hay datos
+            Assert.That(lista.Count, Is.GreaterThanOrEqualTo(0)); 
         }
     }
 }
