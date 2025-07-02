@@ -12,12 +12,12 @@ namespace GestorPedidosEmpresarialesBackend.Domain
         private string nombreCompania;
         private string nombreContacto;
         private string apellidoContacto;
-        private string puestoContacto;
+        private string? puestoContacto;
         private string direccion;
-        private string ciudad;
-        private string provincia;
-        private string codigoPostal;
-        private string pais;
+        private string? ciudad;
+        private string? provincia;
+        private string? codigoPostal;
+        private string? pais;
         private string telefono;
         private bool eliminado;
 

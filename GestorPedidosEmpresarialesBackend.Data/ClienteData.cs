@@ -18,6 +18,13 @@ namespace GestorPedidosEmpresarialesBackend.Data
             connectionString = configuration.GetConnectionString("DefaultConnection");
         }
 
+        // Método auxiliar para leer strings que pueden ser NULL
+        private string? GetNullableString(SqlDataReader reader, string columnName)
+        {
+            int ordinal = reader.GetOrdinal(columnName);
+            return reader.IsDBNull(ordinal) ? null : reader.GetString(ordinal);
+        }
+
         public List<Cliente> GetAllClientes()
         {
             var lista = new List<Cliente>();
@@ -34,16 +41,16 @@ namespace GestorPedidosEmpresarialesBackend.Data
                 var cliente = new Cliente
                 {
                     IdCliente = reader.GetInt32(reader.GetOrdinal("id_cliente")),
-                    NombreCompania = reader.GetString(reader.GetOrdinal("nombre_compania")),
-                    NombreContacto = reader.GetString(reader.GetOrdinal("nombre_contacto")),
-                    ApellidoContacto = reader.GetString(reader.GetOrdinal("apellido_contacto")),
-                    PuestoContacto = reader.GetString(reader.GetOrdinal("puesto_contacto")),
-                    Direccion = reader.GetString(reader.GetOrdinal("direccion")),
-                    Ciudad = reader.GetString(reader.GetOrdinal("ciudad")),
-                    Provincia = reader.GetString(reader.GetOrdinal("provincia")),
-                    CodigoPostal = reader.GetString(reader.GetOrdinal("codigo_postal")),
-                    Pais = reader.GetString(reader.GetOrdinal("pais")),
-                    Telefono = reader.GetString(reader.GetOrdinal("telefono")),
+                    NombreCompania = GetNullableString(reader, "nombre_compania"),
+                    NombreContacto = GetNullableString(reader, "nombre_contacto"),
+                    ApellidoContacto = GetNullableString(reader, "apellido_contacto"),
+                    PuestoContacto = GetNullableString(reader, "puesto_contacto"),
+                    Direccion = GetNullableString(reader, "direccion"),
+                    Ciudad = GetNullableString(reader, "ciudad"),
+                    Provincia = GetNullableString(reader, "provincia"),
+                    CodigoPostal = GetNullableString(reader, "codigo_postal"),
+                    Pais = GetNullableString(reader, "pais"),
+                    Telefono = GetNullableString(reader, "telefono"),
                     Eliminado = false
                 };
 
@@ -65,16 +72,16 @@ namespace GestorPedidosEmpresarialesBackend.Data
                         @provincia, @codigo, @pais, @telefono, 0)";
 
             using SqlCommand command = new SqlCommand(query, connection);
-            command.Parameters.AddWithValue("@compania", cliente.NombreCompania);
-            command.Parameters.AddWithValue("@nombre", cliente.NombreContacto);
-            command.Parameters.AddWithValue("@apellido", cliente.ApellidoContacto);
-            command.Parameters.AddWithValue("@puesto", cliente.PuestoContacto);
-            command.Parameters.AddWithValue("@direccion", cliente.Direccion);
-            command.Parameters.AddWithValue("@ciudad", cliente.Ciudad);
-            command.Parameters.AddWithValue("@provincia", cliente.Provincia);
-            command.Parameters.AddWithValue("@codigo", cliente.CodigoPostal);
-            command.Parameters.AddWithValue("@pais", cliente.Pais);
-            command.Parameters.AddWithValue("@telefono", cliente.Telefono);
+            command.Parameters.AddWithValue("@compania", (object?)cliente.NombreCompania ?? DBNull.Value);
+            command.Parameters.AddWithValue("@nombre", (object?)cliente.NombreContacto ?? DBNull.Value);
+            command.Parameters.AddWithValue("@apellido", (object?)cliente.ApellidoContacto ?? DBNull.Value);
+            command.Parameters.AddWithValue("@puesto", (object?)cliente.PuestoContacto ?? DBNull.Value);
+            command.Parameters.AddWithValue("@direccion", (object?)cliente.Direccion ?? DBNull.Value);
+            command.Parameters.AddWithValue("@ciudad", (object?)cliente.Ciudad ?? DBNull.Value);
+            command.Parameters.AddWithValue("@provincia", (object?)cliente.Provincia ?? DBNull.Value);
+            command.Parameters.AddWithValue("@codigo", (object?)cliente.CodigoPostal ?? DBNull.Value);
+            command.Parameters.AddWithValue("@pais", (object?)cliente.Pais ?? DBNull.Value);
+            command.Parameters.AddWithValue("@telefono", (object?)cliente.Telefono ?? DBNull.Value);
 
             command.ExecuteNonQuery();
         }
@@ -95,16 +102,16 @@ namespace GestorPedidosEmpresarialesBackend.Data
                 return new Cliente
                 {
                     IdCliente = reader.GetInt32(reader.GetOrdinal("id_cliente")),
-                    NombreCompania = reader.GetString(reader.GetOrdinal("nombre_compania")),
-                    NombreContacto = reader.GetString(reader.GetOrdinal("nombre_contacto")),
-                    ApellidoContacto = reader.GetString(reader.GetOrdinal("apellido_contacto")),
-                    PuestoContacto = reader.GetString(reader.GetOrdinal("puesto_contacto")),
-                    Direccion = reader.GetString(reader.GetOrdinal("direccion")),
-                    Ciudad = reader.GetString(reader.GetOrdinal("ciudad")),
-                    Provincia = reader.GetString(reader.GetOrdinal("provincia")),
-                    CodigoPostal = reader.GetString(reader.GetOrdinal("codigo_postal")),
-                    Pais = reader.GetString(reader.GetOrdinal("pais")),
-                    Telefono = reader.GetString(reader.GetOrdinal("telefono")),
+                    NombreCompania = GetNullableString(reader, "nombre_compania"),
+                    NombreContacto = GetNullableString(reader, "nombre_contacto"),
+                    ApellidoContacto = GetNullableString(reader, "apellido_contacto"),
+                    PuestoContacto = GetNullableString(reader, "puesto_contacto"),
+                    Direccion = GetNullableString(reader, "direccion"),
+                    Ciudad = GetNullableString(reader, "ciudad"),
+                    Provincia = GetNullableString(reader, "provincia"),
+                    CodigoPostal = GetNullableString(reader, "codigo_postal"),
+                    Pais = GetNullableString(reader, "pais"),
+                    Telefono = GetNullableString(reader, "telefono"),
                     Eliminado = false
                 };
             }
@@ -112,7 +119,7 @@ namespace GestorPedidosEmpresarialesBackend.Data
             return null;
         }
 
-        public void UpdateCliente (Cliente cliente)
+        public void UpdateCliente(Cliente cliente)
         {
             using SqlConnection connection = new SqlConnection(connectionString);
             connection.Open();
@@ -133,21 +140,21 @@ namespace GestorPedidosEmpresarialesBackend.Data
 
             using SqlCommand command = new SqlCommand(query, connection);
             command.Parameters.AddWithValue("@id", cliente.IdCliente);
-            command.Parameters.AddWithValue("@compania", cliente.NombreCompania);
-            command.Parameters.AddWithValue("@nombre", cliente.NombreContacto);
-            command.Parameters.AddWithValue("@apellido", cliente.ApellidoContacto);
-            command.Parameters.AddWithValue("@puesto", cliente.PuestoContacto);
-            command.Parameters.AddWithValue("@direccion", cliente.Direccion);
-            command.Parameters.AddWithValue("@ciudad", cliente.Ciudad);
-            command.Parameters.AddWithValue("@provincia", cliente.Provincia);
-            command.Parameters.AddWithValue("@codigo", cliente.CodigoPostal);
-            command.Parameters.AddWithValue("@pais", cliente.Pais);
-            command.Parameters.AddWithValue("@telefono", cliente.Telefono);
+            command.Parameters.AddWithValue("@compania", (object?)cliente.NombreCompania ?? DBNull.Value);
+            command.Parameters.AddWithValue("@nombre", (object?)cliente.NombreContacto ?? DBNull.Value);
+            command.Parameters.AddWithValue("@apellido", (object?)cliente.ApellidoContacto ?? DBNull.Value);
+            command.Parameters.AddWithValue("@puesto", (object?)cliente.PuestoContacto ?? DBNull.Value);
+            command.Parameters.AddWithValue("@direccion", (object?)cliente.Direccion ?? DBNull.Value);
+            command.Parameters.AddWithValue("@ciudad", (object?)cliente.Ciudad ?? DBNull.Value);
+            command.Parameters.AddWithValue("@provincia", (object?)cliente.Provincia ?? DBNull.Value);
+            command.Parameters.AddWithValue("@codigo", (object?)cliente.CodigoPostal ?? DBNull.Value);
+            command.Parameters.AddWithValue("@pais", (object?)cliente.Pais ?? DBNull.Value);
+            command.Parameters.AddWithValue("@telefono", (object?)cliente.Telefono ?? DBNull.Value);
 
             command.ExecuteNonQuery();
         }
 
-        public void  DeleteCliente(int id)
+        public void DeleteCliente(int id)
         {
             using SqlConnection connection = new SqlConnection(connectionString);
             connection.Open();
@@ -159,7 +166,5 @@ namespace GestorPedidosEmpresarialesBackend.Data
 
             command.ExecuteNonQuery();
         }
-
-
     }
 }
