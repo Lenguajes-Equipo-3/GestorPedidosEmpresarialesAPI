@@ -43,11 +43,16 @@ namespace GestorPedidosEmpresarialesBackend.Business
             }
             catch (Exception ex)
             {
-               
-                // Aquí puedes agregar lógica adicional, como auditoría o notificación
+                // Si el mensaje es de inventario insuficiente, lo propaga limpio
+                if (ex.Message.Contains("No hay suficiente inventario"))
+                {
+                    throw new ApplicationException(ex.Message );
+                }
+                // Puede agregar aquí otros mensajes personalizados para otros casos
                 throw new ApplicationException("Ocurrió un error al registrar la orden. Por favor, intente nuevamente o contacte a soporte.", ex);
             }
         }
+
 
         /// <summary>
         /// Obtiene todas las órdenes con información de cliente , empleado y detalles correspondites.
