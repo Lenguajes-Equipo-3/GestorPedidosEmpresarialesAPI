@@ -36,5 +36,33 @@ namespace GestorPedidosEmpresarialesAPI.Controllers
             var dto = RolMapper.ToDto(rol);
             return Ok(dto);
         }
+
+        [HttpPost]
+        public IActionResult Create(RolDto dto)
+        {
+            var rol = RolMapper.ToEntity(dto);
+            var nuevoRol = _rolBusiness.Create(rol);
+            var nuevoDto = RolMapper.ToDto(nuevoRol);
+            return CreatedAtAction(nameof(GetById), new { id = nuevoDto.IdRol }, nuevoDto);
+        }
+
+        [HttpPut("{id}")]
+        public IActionResult Update(int id, RolDto dto)
+        {
+            if (id != dto.IdRol)
+            {
+                return BadRequest();
+            }
+            var rol = RolMapper.ToEntity(dto);
+            _rolBusiness.Update(rol);
+            return NoContent();
+        }
+
+        [HttpDelete("{id}")]
+        public IActionResult Delete(int id)
+        {
+            _rolBusiness.Delete(id);
+            return NoContent();
+        }
     }
 }

@@ -52,6 +52,45 @@ namespace GestorPedidosEmpresarialesBackend.Data
             return null;
         }
 
+        public Rol Create(Rol rol)
+        {
+            using (var connection = new SqlConnection(_connectionString))
+            {
+                string query = "INSERT INTO Rol (nombre_rol, eliminado) VALUES (@nombre_rol, 0); SELECT SCOPE_IDENTITY();";
+                var command = new SqlCommand(query, connection);
+                command.Parameters.AddWithValue("@nombre_rol", rol.NombreRol);
+                connection.Open();
+                var id = command.ExecuteScalar();
+                rol.IdRol = System.Convert.ToInt32(id);
+            }
+            return rol;
+        }
+
+        public void Update(Rol rol)
+        {
+            using (var connection = new SqlConnection(_connectionString))
+            {
+                string query = "UPDATE Rol SET nombre_rol = @nombre_rol WHERE id_rol = @id_rol";
+                var command = new SqlCommand(query, connection);
+                command.Parameters.AddWithValue("@id_rol", rol.IdRol);
+                command.Parameters.AddWithValue("@nombre_rol", rol.NombreRol);
+                connection.Open();
+                command.ExecuteNonQuery();
+            }
+        }
+
+        public void Delete(int id)
+        {
+            using (var connection = new SqlConnection(_connectionString))
+            {
+                string query = "UPDATE Rol SET eliminado = 1 WHERE id_rol = @id";
+                var command = new SqlCommand(query, connection);
+                command.Parameters.AddWithValue("@id", id);
+                connection.Open();
+                command.ExecuteNonQuery();
+            }
+        }
+
         private Rol MapToRol(SqlDataReader reader)
         {
             return new Rol

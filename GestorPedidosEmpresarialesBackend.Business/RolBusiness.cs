@@ -15,5 +15,8 @@ namespace GestorPedidosEmpresarialesBackend.Business
 
         public List<Rol> GetAll() => _rolData.GetAll();
         public Rol GetById(int id) => _rolData.GetById(id);
+        public Rol Create(Rol rol) => _rolData.Create(rol);
+        public void Update(Rol rol) => _rolData.Update(rol);
+        public void Delete(int id) => _rolData.Delete(id);
     }
 }
