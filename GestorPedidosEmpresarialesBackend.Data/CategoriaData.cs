@@ -9,7 +9,6 @@ using System.Data.SqlClient;
 
 namespace GestorPedidosEmpresarialesBackend.Data
 {
-
     public class CategoriaData
     {
         private readonly string connectionString;
@@ -74,15 +73,28 @@ namespace GestorPedidosEmpresarialesBackend.Data
             using SqlConnection connection = new SqlConnection(connectionString);
             connection.Open();
 
-            string query = @"
-                INSERT INTO Categoria (descripcion, eliminado)
-                VALUES (@descripcion, @eliminado)";
+            using SqlTransaction transaction = connection.BeginTransaction();
+            try
+            {
+                string query = @"
+                    INSERT INTO Categoria (descripcion, eliminado)
+                    VALUES (@descripcion, @eliminado)";
 
-            using SqlCommand command = new SqlCommand(query, connection);
-            command.Parameters.AddWithValue("@descripcion", categoria.Descripcion);
-            command.Parameters.AddWithValue("@eliminado", categoria.Eliminado);
+                using SqlCommand command = new SqlCommand(query, connection, transaction);
+                command.Parameters.AddWithValue("@descripcion", categoria.Descripcion);
+                command.Parameters.AddWithValue("@eliminado", categoria.Eliminado);
 
-            command.ExecuteNonQuery();
+                command.ExecuteNonQuery();
+
+                // Confirma la transacción
+                transaction.Commit();
+            }
+            catch
+            {
+                // Revertir la transacción en caso de error
+                transaction.Rollback();
+                throw;
+            }
         }
 
         public void DeleteCategoria(int id)
@@ -90,13 +102,52 @@ namespace GestorPedidosEmpresarialesBackend.Data
             using SqlConnection connection = new SqlConnection(connectionString);
             connection.Open();
 
-            string query = "UPDATE Categoria SET eliminado = 1 WHERE id_categoria = @id";
+            using SqlTransaction transaction = connection.BeginTransaction();
+            try
+            {
+                string query = "UPDATE Categoria SET eliminado = 1 WHERE id_categoria = @id";
 
-            using SqlCommand command = new SqlCommand(query, connection);
-            command.Parameters.AddWithValue("@id", id);
+                using SqlCommand command = new SqlCommand(query, connection, transaction);
+                command.Parameters.AddWithValue("@id", id);
 
-            command.ExecuteNonQuery();
+                command.ExecuteNonQuery();
+
+                // Confirma la transacción
+                transaction.Commit();
+            }
+            catch
+            {
+                // Revertir la transacción en caso de error
+                transaction.Rollback();
+                throw;
+            }
+        }
+
+        public void UpdateCategoria(Categoria categoria)
+        {
+            using SqlConnection connection = new SqlConnection(connectionString);
+            connection.Open();
+
+            using SqlTransaction transaction = connection.BeginTransaction();
+            try
+            {
+                string query = "UPDATE Categoria SET descripcion = @descripcion WHERE id_categoria = @id AND eliminado = 0";
+
+                using SqlCommand command = new SqlCommand(query, connection, transaction);
+                command.Parameters.AddWithValue("@id", categoria.IdCategoria);
+                command.Parameters.AddWithValue("@descripcion", categoria.Descripcion);
+
+                command.ExecuteNonQuery();
+
+                // Confirma la transacción
+                transaction.Commit();
+            }
+            catch
+            {
+                // Revertir la transacción en caso de error
+                transaction.Rollback();
+                throw;
+            }
         }
     }
-
 }
