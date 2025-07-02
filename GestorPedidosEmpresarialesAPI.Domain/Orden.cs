@@ -25,7 +25,11 @@ namespace GestorPedidosEmpresarialesBackend.Domain
 
         //Crea orden sin detalles
 
-        public Orden() { }
+        public Orden() { 
+        
+        }
+
+
         public Orden(int idOrden, Cliente cliente, Empleado empleado, DateTime fechaOrden,
                      string direccionViaje, string ciudadViaje, string provinciaViaje,
                      string paisViaje, string telefonoViaje, bool eliminado)
@@ -70,10 +74,19 @@ namespace GestorPedidosEmpresarialesBackend.Domain
         public string ProvinciaViaje { get => provinciaViaje; set => provinciaViaje = value; }
         public string PaisViaje { get => paisViaje; set => paisViaje = value; }
         public string TelefonoViaje { get => telefonoViaje; set => telefonoViaje = value; }
+      
         public bool Eliminado { get => eliminado; set => eliminado = value; }
 
-        // Propiedad de solo lectura para ver los detalles de forma segura
-        public IReadOnlyList<DetalleOrden> DetallesOrden => detallesOrden.AsReadOnly();
+        public List<DetalleOrden> DetallesOrden
+        {
+            get => detallesOrden;
+            set
+            {
+                detallesOrden.Clear();
+                if (value != null)
+                    detallesOrden.AddRange(value);
+            }
+        }
 
         //Metodos de manipulacion de detalles de la orden
         public void AgregarDetalle(DetalleOrden detalle)

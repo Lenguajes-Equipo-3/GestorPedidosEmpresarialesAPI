@@ -19,7 +19,8 @@ builder.Services.AddScoped<MetodoPagoData>();
 builder.Services.AddScoped<MetodoPagoBusiness>();
 builder.Services.AddScoped<PagoData>();
 builder.Services.AddScoped<PagoBusiness>();
-
+builder.Services.AddScoped<OrdenData>();
+builder.Services.AddScoped<OrdenBusiness>();
 
 
 // ¡AÑADE ESTAS LÍNEAS!

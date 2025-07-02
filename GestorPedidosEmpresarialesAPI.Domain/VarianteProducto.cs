@@ -17,6 +17,10 @@ namespace GestorPedidosEmpresarialesBackend.Domain
         private int puntoReorden;
         private bool eliminado;
 
+        public VarianteProducto ()
+        {
+        }
+
         public VarianteProducto(int idVariante, ProductoBase productoBase, string talla, string descripcion, decimal precio, decimal cantidadExistencias, int puntoReorden, bool eliminado)
         {
             this.idVariante = idVariante;
