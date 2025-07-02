@@ -55,8 +55,7 @@ namespace GestorPedidosEmpresarialesBackend.Data
                         u.correo = @correo AND u.contrasenna = @contrasenna
                         AND u.id_empleado IS NOT NULL
                         AND e.eliminado = 0
-                        AND d.eliminado = 0
-                        AND r.eliminado = 0";
+                        ";
 
                 using (SqlCommand command = new SqlCommand(query, connection))
                 {
