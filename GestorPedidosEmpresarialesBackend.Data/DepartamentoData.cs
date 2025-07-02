@@ -52,6 +52,43 @@ namespace GestorPedidosEmpresarialesBackend.Data
             return null;
         }
 
+        public void Insert(Departamento departamento)
+        {
+            using (var connection = new SqlConnection(_connectionString))
+            {
+                string query = "INSERT INTO Departamento (nombre_departamento, eliminado) VALUES (@nombre, 0)";
+                var command = new SqlCommand(query, connection);
+                command.Parameters.AddWithValue("@nombre", departamento.NombreDepartamento);
+                connection.Open();
+                command.ExecuteNonQuery();
+            }
+        }
+
+        public void Update(Departamento departamento)
+        {
+            using (var connection = new SqlConnection(_connectionString))
+            {
+                string query = "UPDATE Departamento SET nombre_departamento = @nombre WHERE id_departamento = @id AND eliminado = 0";
+                var command = new SqlCommand(query, connection);
+                command.Parameters.AddWithValue("@id", departamento.IdDepartamento);
+                command.Parameters.AddWithValue("@nombre", departamento.NombreDepartamento);
+                connection.Open();
+                command.ExecuteNonQuery();
+            }
+        }
+
+        public void Delete(int id)
+        {
+            using (var connection = new SqlConnection(_connectionString))
+            {
+                string query = "UPDATE Departamento SET eliminado = 1 WHERE id_departamento = @id";
+                var command = new SqlCommand(query, connection);
+                command.Parameters.AddWithValue("@id", id);
+                connection.Open();
+                command.ExecuteNonQuery();
+            }
+        }
+
         private Departamento MapToDepartamento(SqlDataReader reader)
         {
             return new Departamento

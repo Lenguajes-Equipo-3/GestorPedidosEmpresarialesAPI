@@ -17,6 +17,15 @@ namespace GestorPedidosEmpresarialesAPI.Controllers
             _departamentoBusiness = departamentoBusiness;
         }
 
+        [HttpPost]
+        public IActionResult Create(DepartamentoDto dto)
+        {
+            var departamento = DepartamentoMapper.ToEntity(dto);
+            _departamentoBusiness.Insert(departamento);
+            var nuevoDto = DepartamentoMapper.ToDto(departamento);
+            return Ok(new { mensaje = "Departamento creado exitosamente" });
+        }
+
         [HttpGet]
         public IActionResult GetAll()
         {
@@ -35,6 +44,31 @@ namespace GestorPedidosEmpresarialesAPI.Controllers
             }
             var dto = DepartamentoMapper.ToDto(departamento);
             return Ok(dto);
+        }
+
+        [HttpPut("{id}")]
+        public IActionResult Update(int id, DepartamentoDto dto)
+        {
+            if (id != dto.IdDepartamento)
+            {
+                return BadRequest();
+            }
+            var departamento = DepartamentoMapper.ToEntity(dto);
+            _departamentoBusiness.Update(departamento);
+            return Ok(new { mensaje = "Departamento actualizado correctamente" });
+        }
+
+        [HttpDelete("{id}")]
+        public IActionResult Delete(int id)
+        {
+            var existente = _departamentoBusiness.GetById(id);
+            if (existente == null)
+            {
+                return NotFound(new { mensaje = "Departamento no encontrado" });
+            }
+            _departamentoBusiness.Delete(id);
+            return Ok(new { mensaje = "Departamento eliminado correctamente" });
+
         }
     }
 }
